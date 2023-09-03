@@ -21,7 +21,9 @@
 		<div class="container-fluid">
 			<span class="navbar-text text-bg-primary">Status</span>
 			<!-- <span class="navbar-text text-bg-primary me-auto">Informações importantes aqui</span> -->
-			<button type="button" class="btn btn-light">Logout</button>
+			<form role="form" method="link" action="logoutServlet" method="GET">
+				<button type="submit" value="Logout" class="btn btn-light">Logout</button>
+			</form>
 		</div>
 	</nav>
 	<hr>
