@@ -17,7 +17,7 @@ import DTO.UserDTO;
  * @author Rogério Oliveira Servlet implementation class LoginServlet
  */
 
-@WebServlet("/LoginServlet")
+@WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -31,12 +31,17 @@ public class LoginServlet extends HttpServlet {
 
 		String userName = request.getParameter("email");
 		String userPassword = request.getParameter("password");
-		String accessPage = "/error.jsp";
+		String accessPage;
 		
 		UserDTO userDTO = ConnectionDAO.getInstance().validateUser(userName, userPassword);
 		if(userDTO != null) {
+			request.setAttribute("validateMessage", "Bem vindo! " + userDTO.getName());
 			accessPage = "/menu.jsp";
-		}				
+		} else {
+			request.setAttribute("validateMessage", "E-mail / Senha inválido(s)!");
+			accessPage = "/error.jsp";
+			
+		}
 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(accessPage);
 		dispatcher.forward(request, response);				

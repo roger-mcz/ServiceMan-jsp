@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+<jsp:useBean id="validateMessage" type="java.lang.String" scope="request"/>
 <html>
 <head>
 <meta charset="utf-8">
@@ -21,7 +22,7 @@
 		<div class="container-fluid">
 			<span class="navbar-text text-bg-primary">Status</span>
 			<!-- <span class="navbar-text text-bg-primary me-auto">Informações importantes aqui</span> -->
-			<form role="form" method="link" action="logoutServlet" method="GET">
+			<form role="form" method="link" action="Logout" method="GET">
 				<button type="submit" value="Logout" class="btn btn-light">Logout</button>
 			</form>
 		</div>
@@ -29,7 +30,9 @@
 	<hr>
 	<h2>Menu principal:</h2>
 	<hr>
-	<h2>Acesso ok</h2>
+	<div>
+		<h4>${validateMessage}</h4>
+	</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"

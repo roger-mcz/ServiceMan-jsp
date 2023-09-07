@@ -106,7 +106,7 @@ public class ConnectionDAO {
 			} else {
 				Logger.getLogger(LoginServlet.class.getName()).log(Level.WARNING,
 						"Falha na tentativa de acesso: " + userName);
-				connection.close();
+				//connection.close();
 			}
 			
 		} catch (SQLException ex) {

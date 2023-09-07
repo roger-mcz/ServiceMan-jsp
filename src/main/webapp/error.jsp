@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+<jsp:useBean id="validateMessage" type="java.lang.String" scope="request"/>
 <html>
 <head>
 <meta charset="utf-8">
@@ -14,7 +15,7 @@
 	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
 	crossorigin="anonymous">
 
-<title>Service manager</title>
+<title>Service manager - Erro</title>
 </head>
 <body>
 	<nav class="navbar bg-primary">
@@ -26,7 +27,9 @@
 	<hr>
 	<h2>Erro:</h2>
 	<hr>
-	<h2>erro ....</h2>
+	<div>
+		<h4>${validateMessage}</h4>
+	</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"

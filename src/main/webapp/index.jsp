@@ -27,7 +27,7 @@
 	<div class="row">
 		<div class="col-md-4"></div>
 		<div class="col-md-4 mt-5">
-			<form role="form" action="LoginServlet" method="POST">
+			<form role="form" action="Login" method="POST">
 				<div class="form-group mt-3">
 					<label for="inputEmail"> Email address </label> <input type="email"
 						class="form-control" id="inputEmail" name="email" />
