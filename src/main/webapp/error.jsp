@@ -20,16 +20,14 @@
 <body>
 	<nav class="navbar bg-primary">
 		<div class="container-fluid">
-			<span class="navbar-text text-bg-primary">Erro:</span>
+			<span class="navbar-text text-bg-primary">Erro: ${validateMessage}</span>
 			<!-- <span class="navbar-text text-bg-primary me-auto">Informações importantes aqui</span> -->
 		</div>
 	</nav>
 	<hr>
 	<h2>Erro:</h2>
 	<hr>
-	<div>
-		<h4>${validateMessage}</h4>
-	</div>
+
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"

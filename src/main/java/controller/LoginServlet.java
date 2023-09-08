@@ -35,7 +35,7 @@ public class LoginServlet extends HttpServlet {
 		
 		UserDTO userDTO = ConnectionDAO.getInstance().validateUser(userName, userPassword);
 		if(userDTO != null) {
-			request.setAttribute("validateMessage", "Bem vindo! " + userDTO.getName());
+			request.setAttribute("validateMessage", "Bem vindo " + userDTO.getName() + " !");
 			accessPage = "/menu.jsp";
 		} else {
 			request.setAttribute("validateMessage", "E-mail / Senha inválido(s)!");
