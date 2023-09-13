@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <jsp:useBean id="validateMessage" type="java.lang.String" scope="request"/>
 <html>
@@ -21,7 +21,7 @@
 	<nav class="navbar bg-primary">
 		<div class="container-fluid">
 			<span class="navbar-text text-bg-primary">Erro: ${validateMessage}</span>
-			<!-- <span class="navbar-text text-bg-primary me-auto">Informações importantes aqui</span> -->
+			<!-- <span class="navbar-text text-bg-primary me-auto">InformaÃ§Ãµes importantes aqui</span> -->
 		</div>
 	</nav>
 	<hr>

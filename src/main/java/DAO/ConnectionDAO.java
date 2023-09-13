@@ -51,10 +51,33 @@ public class ConnectionDAO {
 		return runSQL(sql, args, false);
 	}
 
-	public ResultSet runSQLResultSet(String sql, Object[] args) {
-		return (ResultSet) runSQL(sql, args, true);
-	}
+//	public ResultSet runSQLResultSet(String sql, Object[] args) {
+//		return (ResultSet) runSQL(sql, args, true);
+//	}
 
+	public ResultSet runSQLResultSet(String sql) {
+		return (ResultSet) runSQL(sql);
+		
+	}
+	
+
+	public Object runSQL(String sql) {
+		try {
+			PreparedStatement ps = connection.prepareStatement(sql);
+			Object resultSQL = null;
+			resultSQL = ps.executeQuery();
+			return resultSQL;
+
+		} catch (SQLException ex) {
+			Logger.getLogger(ConnectionDAO.class.getName()).log(Level.SEVERE, null, ex);
+			ex.printStackTrace();
+			return null;
+		}
+		
+	}
+	
+	
+	
 	public Object runSQL(String sql, Object[] args, Boolean hasReturn) {
 		try {
 			PreparedStatement ps = connection.prepareStatement(sql);

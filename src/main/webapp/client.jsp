@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <jsp:useBean id="validateMessage" type="java.lang.String"
 	scope="request" />
@@ -23,7 +23,7 @@
 		<div class="container-fluid">
 			<span class="navbar-text text-bg-primary">Status
 				${validateMessage}</span>
-			<!-- <span class="navbar-text text-bg-primary me-auto">Informaï¿½ï¿½es importantes aqui</span> -->
+			<!-- <span class="navbar-text text-bg-primary me-auto">Informa��es importantes aqui</span> -->
 			<form role="form" method="link" action="Logout" method="GET">
 				<button type="submit" value="Logout" class="btn btn-light">Logout</button>
 			</form>
@@ -35,43 +35,21 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-md-2">
-		</div>
-		<div class="d-flex col-md-8 text-center my-5">
-			<div class="p-2 d-flex flex-column">
-				<a href="clients.html">
-					<img src="img/client.jpg" alt="clients-img" class="rounded-circle img-thumbnail mx-5">
-					<p>Cliente</p>
-				</a>
-			</div>	
-			<div class="p-2 d-flex flex-column">
-				<a href="agreements.html">
-					<img src="img/agreement.jpg" alt="agreement-img" class="rounded-circle img-thumbnail mx-5">
-					<p>Contrato</p>
-				</a>
-			</div>
-			<div class="p-2 d-flex flex-column">
-				<a href="tickets.html">
-					<img src="img/ticket.jpg" alt="ticket-img" class="rounded-circle img-thumbnail mx-5">
-					<p>Tickets</p>
-				</a>
-			</div>
-			<div class="p-2 d-flex flex-column">
-				<a href="services.html">
-					<img src="img/service.jpg" alt="service-img" class="rounded-circle img-thumbnail mx-5">
-					<p>Serviços</p>
-				</a>
-			</div>
-			<div class="p-2 d-flex flex-column">
-				<a href="employees.jsp">
-					<img src="img/employees.jpg" alt="employees-img" class="rounded-circle img-thumbnail mx-5">
-					<p>Colaboradores</p>
-				</a>
+		<div class="col-md-2"></div>
+		<div class="col-md-8 text-center my-5">
+			<div>
+				<a href="clients.html"><img src="img/client.jpg"
+					alt="clients-img" class="rounded-circle img-thumbnail mx-5"></a>
+				<a href="agreements.html"><img src="img/agreement.jpg"
+					alt="agreement-img" class="rounded-circle img-thumbnail mx-5"></a>
+				<a href="tickets.html"><img src="img/ticket.jpg"
+					alt="ticket-img" class="rounded-circle img-thumbnail mx-5"></a> <a
+					href="services.html"><img src="img/service.jpg"
+					alt="service-img" class="rounded-circle img-thumbnail mx-5"></a>
 			</div>
 		</div>
 		<div class="col-md-2"></div>
 	</div>
-
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
