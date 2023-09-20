@@ -27,11 +27,37 @@
 <body>
 	<nav class="navbar bg-primary">
 		<div class="container-fluid">
-			<span class="navbar-text text-bg-primary">Status:
-				${validateMessage}</span>
-			<!-- <span class="navbar-text text-bg-primary me-auto">Informaï¿½ï¿½es importantes aqui</span> -->
-			<form role="form" action="Logout" method="GET">
-				<button type="submit" value="Logout" class="btn btn-light">Logout</button>
+			<span class="navbar-text text-bg-primary">Status: 
+				${validateMessage}
+			</span>
+			<form class="d-flex" role="form" action="Logout" method="GET">
+				<button class="btn btn-light" type="button" data-bs-toggle="modal" data-bs-target="#mdl_logout">Logout</button>
+				
+				<!-- modal de confirmação -->
+				<div class="modal fade" id="mdl_logout"	data-bs-backdrop="static">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Deseja sair do sistema?</h5>
+							</div>
+							<div class="modal-footer">
+								<button 
+									type="submit" 
+									id="btnSair"
+									class="btn btn-success"
+									data-bs-dismiss="modal"
+									>Sair
+								</button>
+								<button 
+									type="button" 
+									class="btn btn-danger" 
+									data-bs-dismiss="modal">Cancelar
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
 			</form>
 		</div>
 	</nav>
@@ -43,10 +69,10 @@
 		<div class="container col-sm-10">
 			<div class="card">
 				<div class="card-header">
-					<i class="bi bi-globe"></i> <strong>Navegação de
-						colaboradores</strong> <a href="add-users.php"
-						class="btn btn-secondary btn-sm float-end"> <i
-						class="bi bi-person-plus"></i> Adicionar
+					<i class="bi bi-globe"></i> 
+						<strong>Navegação de colaboradores</strong> 
+						<a href="createemployee.jsp" class="btn btn-secondary btn-sm float-end"> 
+						<i class="bi bi-person-plus"></i> Adicionar
 					</a>
 				</div>
 				<div class="card-body">
@@ -54,32 +80,34 @@
 						<h5 class="card-title lh-lg">
 							<i class="bi bi-search"></i> Pesquisar colaborador
 						</h5>
-						<form action="Employees" method="POST">
+						<form action="Employees" method="GET">
 							<div class="row">
-								<div class="col-sm-2">
+								<div class="col-sm-3">
 									<div class="form-group">
 										<label>Nome</label> <input type="text" name="username"
 											id="username" class="form-control" value="">
 									</div>
 								</div>
-								<div class="col-sm-2">
+								<div class="col-sm-3">
 									<div class="form-group">
 										<label>Email</label> <input type="email" name="useremail"
 											id="useremail" class="form-control" value="">
 									</div>
 								</div>
 								<div class="clearfix"></div>
-								<div class="col-sm-3 lh-lg">
+								<div class="col-sm-4 lh-lg">
 									<div class="form-group">
 										<label>&nbsp;</label>
 										<div>
-											<button type="submit" name="Employees" value="Employees"
-												id="submit" class="btn btn-primary">
+											<button type="submit" id="btn_search" class="btn btn-primary">
 												<i class="bi bi-search"></i> Pesquisar
 											</button>
-											<a href=""
-												class="btn btn-danger"><i class="bi bi-arrow-repeat"></i>
-												Limpar </a>
+											<button type="reset" id="btn_clean" class="btn btn-danger">
+												<i class="bi bi-arrow-repeat"></i> Limpar
+											</button>
+											<button name="btn_back" type="button" class="btn btn-secondary" onclick="history.back()">
+												<i class="bi bi-arrow-left-circle"></i> Voltar
+											</button>
 										</div>
 									</div>
 								</div>
@@ -95,7 +123,7 @@
 		<hr>
 	</div>
 	<div class="container col-sm-10">
-	<form action="Employees" method="POST">
+	<form action="Employees" method="GET">
 		<table class="table table-striped table-bordered table-hover">
 			<thead class="table-primary bg-primary">
 				<tr>

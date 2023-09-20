@@ -21,11 +21,37 @@
 <body>
 	<nav class="navbar bg-primary">
 		<div class="container-fluid">
-			<span class="navbar-text text-bg-primary">Status
-				${validateMessage}</span>
-			<!-- <span class="navbar-text text-bg-primary me-auto">Informaï¿½ï¿½es importantes aqui</span> -->
-			<form role="form" method="link" action="Logout" method="GET">
-				<button type="submit" value="Logout" class="btn btn-light">Logout</button>
+			<span class="navbar-text text-bg-primary">Status: 
+				${validateMessage}
+			</span>
+			<form class="d-flex" role="form" action="Logout" method="GET">
+				<button class="btn btn-light" type="button" data-bs-toggle="modal" data-bs-target="#mdl_logout">Logout</button>
+				
+				<!-- modal de confirmação -->
+				<div class="modal fade" id="mdl_logout"	data-bs-backdrop="static">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Deseja sair do sistema?</h5>
+							</div>
+							<div class="modal-footer">
+								<button 
+									type="submit" 
+									id="btnSair"
+									class="btn btn-success"
+									data-bs-dismiss="modal"
+									>Sair
+								</button>
+								<button 
+									type="button" 
+									class="btn btn-danger" 
+									data-bs-dismiss="modal">Cancelar
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				
 			</form>
 		</div>
 	</nav>
@@ -63,7 +89,7 @@
 				</a>
 			</div>
 			<div class="p-2 d-flex flex-column">
-				<a href="employees.jsp">
+				<a href="Employee" method="GET">
 					<img src="img/employees.jpg" alt="employees-img" class="rounded-circle img-thumbnail mx-5">
 					<p>Colaboradores</p>
 				</a>

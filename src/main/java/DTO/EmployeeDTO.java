@@ -12,7 +12,7 @@ public class EmployeeDTO {
 	private String cpf;
 	private String office; //funcao|cargo
 	private String role;	//senioridade
-	private Boolean active = false;
+	private Boolean active;
 	private String street; //rua
 	private int number;
 	private String cep;
@@ -203,6 +203,15 @@ public class EmployeeDTO {
 
 	public void setState(String state) {
 		this.state = state;
+	}
+
+
+	@Override
+	public String toString() {
+		return "EmployeeDTO [name=" + name + ", email=" + email + ", phone=" + phone + ", secondname=" + secondname
+				+ ", cpf=" + cpf + ", office=" + office + ", role=" + role + ", active=" + active + ", street=" + street
+				+ ", number=" + number + ", cep=" + cep + ", neighborhood=" + neighborhood + ", city=" + city
+				+ ", state=" + state + "]";
 	}
 	
 	

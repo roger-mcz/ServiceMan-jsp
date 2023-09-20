@@ -138,62 +138,14 @@ public class ConnectionDAO {
 		}
 		return userDTO;
 	}
-	
-	
-	
-	
-	
-	
-	//legado:
-	/*
-	public UserDTO makeConnection(String userName, String userPassword) {
 
-		String dbUrl = "jdbc:postgresql://postgres14:5432/serviceman";
-		String dbUser = "serviceman";
-		String dbPassword = "p22ssw00rd";
-		UserDTO userDTO = null;
-
+	public void closeConnection() {
 		try {
-			Class.forName("org.postgresql.Driver");
-			Connection connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
-			PreparedStatement ps = connection.prepareStatement("SELECT tb_employee.id, tb_employee.name"
-					+ " FROM tb_employee" + " INNER JOIN tb_user" + "   ON tb_employee.id = tb_user.idemployee"
-					+ " WHERE tb_employee.email=? AND password=?");
-//		"select username, email from tb_employee where username=? and password=?");
-
-			ps.setString(1, userName);
-			ps.setString(2, userPassword);
-			ResultSet rs = ps.executeQuery();
-
-			userDTO = new UserDTO();
-			userDTO.setId(Long.parseLong(rs.getString("id")));
-			userDTO.setName(rs.getString("name"));
-			userDTO.setEmail(userName);
-
-			if (rs.next()) {
-				Logger.getLogger(LoginServlet.class.getName()).log(Level.INFO,
-						"Acesso realizado com sucesso: " + userDTO.getName());
-				// accessPage = "/menu.jsp";
-			} else {
-				Logger.getLogger(LoginServlet.class.getName()).log(Level.WARNING,
-						"Falha na tentativa de acesso: " + userName);
-				// accessPage = "/error.jsp";
-			}
-
+			connection.close();
 		} catch (SQLException ex) {
-			Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, "Falha de SQL: " + ex.getMessage());
-			// accessPage = "/error.jsp";
-		} catch (RuntimeException ex) {
-			Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, "Falha interna - RuntimeException");
-			// accessPage = "/error.jsp";
-		} catch (ClassNotFoundException ex) {
-			Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE,
-					"Erro ao acessar o driver: " + ex.getMessage());
-			// accessPage = "/error.jsp";
+			ex.printStackTrace();
 		}
-		return userDTO;
 	}
-	*/
 	
 	
 }
