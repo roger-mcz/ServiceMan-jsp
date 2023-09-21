@@ -9,19 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import BO.LoginBO;
 import DAO.ConnectionDAO;
 import DTO.UserDTO;
 
 
 /**
- * @author Rogério Oliveira Servlet implementation class LoginServlet
+ * @author Rogério Oliveira Servlet implementation class LoginControllerServlet
  */
 
 @WebServlet("/Login")
-public class LoginServlet extends HttpServlet {
+public class LoginControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public LoginServlet() {
+	public LoginControllerServlet() {
 		super();
 	}
 
@@ -31,16 +32,18 @@ public class LoginServlet extends HttpServlet {
 
 		String userName = request.getParameter("email");
 		String userPassword = request.getParameter("password");
-		String accessPage;
 		
-		UserDTO userDTO = ConnectionDAO.getInstance().validateUser(userName, userPassword);
+		LoginBO loginBO = new LoginBO();
+		String accessPage;
+
+		UserDTO userDTO = loginBO.validateUser(userName, userPassword);
+		
 		if(userDTO != null) {
 			request.setAttribute("validateMessage", "Bem vindo " + userDTO.getName() + " !");
 			accessPage = "/menu.jsp";
 		} else {
 			request.setAttribute("validateMessage", "E-mail / Senha inválido(s)!");
-			accessPage = "/error.jsp";
-			
+			accessPage = "/error.jsp";			
 		}
 
 		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(accessPage);

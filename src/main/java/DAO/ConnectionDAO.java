@@ -9,7 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import DTO.UserDTO;
-import controller.LoginServlet;
+import controller.LoginControllerServlet;
 
 /**
  * @author Rogério Oliveira Classe para conexão ao prostgres 11, ver. do jar: 42.5.0
@@ -124,10 +124,10 @@ public class ConnectionDAO {
 				}
 				userDTO.setEmail(userName);
 				
-				Logger.getLogger(LoginServlet.class.getName()).log(Level.INFO,
+				Logger.getLogger(LoginControllerServlet.class.getName()).log(Level.INFO,
 						"Acesso realizado com sucesso: " + userDTO.getName());
 			} else {
-				Logger.getLogger(LoginServlet.class.getName()).log(Level.WARNING,
+				Logger.getLogger(LoginControllerServlet.class.getName()).log(Level.WARNING,
 						"Falha na tentativa de acesso: " + userName);
 				//connection.close();
 			}

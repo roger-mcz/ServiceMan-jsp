@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import DTO.EmployeeDTO;
 
 /**
- * @author Rogério Oliveira Servlet implementation class LoginServlet
+ * @author Rogério Oliveira Servlet implementation class LoginControllerServlet
  */
 
 @WebServlet("/Employee")
