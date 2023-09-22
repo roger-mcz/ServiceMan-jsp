@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import BO.LoginBO;
-import DAO.ConnectionDAO;
+import DAO.EntityDAO;
 import DTO.UserDTO;
 
 

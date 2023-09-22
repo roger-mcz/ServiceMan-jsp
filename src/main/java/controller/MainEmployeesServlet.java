@@ -16,7 +16,7 @@ import DTO.EmployeeDTO;
  * @author Rogério Oliveira Servlet implementation class LoginControllerServlet
  */
 
-@WebServlet("/Employee")
+//@WebServlet("/Employee")
 public class MainEmployeesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	

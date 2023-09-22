@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import DAO.ConnectionDAO;
+import DAO.EntityDAO;
 import DTO.EmployeeDTO;
 
 
@@ -19,7 +19,9 @@ public class EmployeeController {
 		 * No sql foi requisitada a representação textual do campo boolean, uma vez que o banco internamente salva t/f/y/n.
 		 * algumas ferramentas fazem esse cast, o psql não faz, testes apontam que o driver do banco faz. 
 		 * pra não criar código p/ tratar, foi explicitado no sql: campo::text.
-		 */
+		 
+		
+		
 		
 		ArrayList<EmployeeDTO> employeeDTOList = null;
 		String sql = "SELECT name, email, phone, secondname, office, role, active::text"
@@ -27,7 +29,7 @@ public class EmployeeController {
 				+ " ORDER BY name";
 		
 		try {
-			ResultSet rs = ConnectionDAO.getInstance().runSQLResultSet(sql);
+			ResultSet rs = EntityDAO.getInstance().runSQLResultSet(sql);
 			String strName, strEmail, strPhone, srtSecondname, strOffice, strRole;
 			Boolean boolActive = null;
 			employeeDTOList = new ArrayList<EmployeeDTO>();  			
@@ -42,13 +44,17 @@ public class EmployeeController {
 				boolActive = Boolean.valueOf(rs.getString(7));
 			//	System.out.println("Nome:" + strName + ", active:" + rs.getString(7));
 				employeeDTOList.add(new EmployeeDTO(strName, strEmail, strPhone, srtSecondname, strOffice, strRole, boolActive));
+			
 			}					
 			
 		} catch (SQLException ex) {
-			Logger.getLogger(ConnectionDAO.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(EntityDAO.class.getName()).log(Level.SEVERE, null, ex);
 			ex.printStackTrace();
 		}
 		return employeeDTOList;
+		
+		*/
+		return null;
 	}
 	
 

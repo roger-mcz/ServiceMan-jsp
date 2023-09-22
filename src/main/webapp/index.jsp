@@ -29,13 +29,12 @@
 		<div class="col-md-4 mt-5">
 			<form role="form" action="Login" method="POST">
 				<div class="form-group mt-3">
-					<label for="inputEmail"> Email address </label> <input type="email"
-						class="form-control" id="inputEmail" name="email" />
+					<label for="inputEmail"> Email address </label> 
+					<input type="email"	class="form-control" id="inputEmail" name="email" />
 				</div>
 				<div class="form-group mt-3">
-					<label for="inputPassword"> Password </label> <input
-						type="password" class="form-control" id="inputPassword"
-						name="password" />
+					<label for="inputPassword"> Password </label> 
+					<input type="password" class="form-control" id="inputPassword"	name="password" />
 				</div>
 				<div class="form-group mt-4">
 					<button type="submit" class="btn btn-primary">Acessar!</button>

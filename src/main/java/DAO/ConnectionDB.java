@@ -35,7 +35,7 @@ public class ConnectionDB {
 	}
 	
 
-	private ConnectionDB() {
+	public ConnectionDB() {
 		String dbUrl = "jdbc:postgresql://postgres14:5432/serviceman";
 		String dbUser = "serviceman";
 		String dbPassword = "p22ssw00rd";

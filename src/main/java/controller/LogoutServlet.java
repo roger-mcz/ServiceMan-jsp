@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import DAO.ConnectionDAO;
+import DAO.EntityDAO;
 
 /**
  * @author Rogério Oliveira Servlet implementation class Logout
@@ -34,7 +34,7 @@ public class LogoutServlet extends HttpServlet {
 		if(session != null) {
 			session.removeAttribute("userDTO");
 			session.invalidate();
-			//ConnectionDAO.getInstance().closeConnection();
+			//EntityDAO.getInstance().closeConnection();
 			
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(accessPage);
 			dispatcher.forward(request, response);

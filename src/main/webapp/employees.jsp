@@ -80,7 +80,7 @@
 						<h5 class="card-title lh-lg">
 							<i class="bi bi-search"></i> Pesquisar colaborador
 						</h5>
-						<form action="Employees" method="GET">
+						<form action="employee?action=list" method="GET">
 							<div class="row">
 								<div class="col-sm-3">
 									<div class="form-group">
@@ -141,6 +141,7 @@
 					ArrayList<EmployeeDTO> employeeDTOList = (ArrayList<EmployeeDTO>) request.getAttribute("employeeList");
 					if (employeeDTOList != null) {
 						for (int i =0; i < employeeDTOList.size(); i++) { 
+							
 				%>					
 						<tr>
 							<td><%=employeeDTOList.get(i).getName()%></td>

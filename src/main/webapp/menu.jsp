@@ -89,7 +89,7 @@
 				</a>
 			</div>
 			<div class="p-2 d-flex flex-column">
-				<a href="Employee" method="GET">
+				<a href="employee?action=list" method="GET">
 					<img src="img/employees.jpg" alt="employees-img" class="rounded-circle img-thumbnail mx-5">
 					<p>Colaboradores</p>
 				</a>

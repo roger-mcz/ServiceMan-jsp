@@ -44,7 +44,7 @@ public class LoginDAO {
 			}
 			
 		} catch (SQLException ex) {
-			Logger.getLogger(ConnectionDAO.class.getName()).log(Level.SEVERE, null, ex);
+			Logger.getLogger(EntityDAO.class.getName()).log(Level.SEVERE, null, ex);
 			ex.printStackTrace();
 		}
 		return userDTO;
