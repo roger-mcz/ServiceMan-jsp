@@ -30,10 +30,9 @@
 			<span class="navbar-text text-bg-primary">Status: 
 				${validateMessage}
 			</span>
+			<!-- modal de confirmação -->
 			<form class="d-flex" role="form" action="Logout" method="GET">
 				<button class="btn btn-light" type="button" data-bs-toggle="modal" data-bs-target="#mdl_logout">Logout</button>
-				
-				<!-- modal de confirmação -->
 				<div class="modal fade" id="mdl_logout"	data-bs-backdrop="static">
 					<div class="modal-dialog">
 						<div class="modal-content">
@@ -56,9 +55,9 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				
+				</div>				
 			</form>
+			<!-- modal de confirmação -->
 		</div>
 	</nav>
 	<div class="row">
@@ -80,7 +79,7 @@
 						<h5 class="card-title lh-lg">
 							<i class="bi bi-search"></i> Pesquisar colaborador
 						</h5>
-						<form action="employee?action=list" method="GET">
+<!-- 	form antigo		<form action="employee?action=list" method="GET"> -->
 							<div class="row">
 								<div class="col-sm-3">
 									<div class="form-group">
@@ -99,21 +98,23 @@
 									<div class="form-group">
 										<label>&nbsp;</label>
 										<div>
-											<button type="submit" id="btn_search" class="btn btn-primary">
-												<i class="bi bi-search"></i> Pesquisar
-											</button>
-											<button type="reset" id="btn_clean" class="btn btn-danger">
-												<i class="bi bi-arrow-repeat"></i> Limpar
-											</button>
-											<button name="btn_back" type="button" class="btn btn-secondary" onclick="history.back()">
-												<i class="bi bi-arrow-left-circle"></i> Voltar
-											</button>
+											<form action="employee?action=list" method="GET">
+												<button type="submit" id="btn_search" class="btn btn-primary">
+													<i class="bi bi-search"></i> Pesquisar
+												</button>
+												<button type="reset" id="btn_clean" class="btn btn-danger">
+													<i class="bi bi-arrow-repeat"></i> Limpar
+												</button>
+												<button name="btn_back" type="button" class="btn btn-secondary" onclick="history.back()">
+													<i class="bi bi-arrow-left-circle"></i> Voltar
+												</button>
+											</form>
 										</div>
 									</div>
 								</div>
 							</div>
+<!-- 	form antigo		</form> -->
 					</div>
-					</form>
 				</div>
 			</div>
 		</div>
@@ -123,7 +124,7 @@
 		<hr>
 	</div>
 	<div class="container col-sm-10">
-	<form action="Employees" method="GET">
+<!-- 	<form action="Employees" method="GET"> -->
 		<table class="table table-striped table-bordered table-hover">
 			<thead class="table-primary bg-primary">
 				<tr>
@@ -138,7 +139,8 @@
 			</thead>
 			<tbody>
 				<%
-					ArrayList<EmployeeDTO> employeeDTOList = (ArrayList<EmployeeDTO>) request.getAttribute("employeeList");
+					ArrayList<EmployeeDTO> employeeDTOList = null;
+					employeeDTOList = (ArrayList<EmployeeDTO>) request.getAttribute("employeeList");
 					if (employeeDTOList != null) {
 						for (int i =0; i < employeeDTOList.size(); i++) { 
 							
@@ -158,33 +160,8 @@
 <!-- 					<td colspan="6" align="center">No Record(s) Found!</td> -->
 			</tbody>
 		</table>
-		</form>
+<!--  		</form> -->
 
-<%-- 
-<form action="Employees" method="POST">
-
-	<button type="submit" name="Employees" value="Employees"
-		id="submit" class="btn btn-primary">
-		<i class="bi bi-search"></i> atualizar
-	</button>
-	<%
-		ArrayList<EmployeeDTO> employeeDTOList2 = new ArrayList<EmployeeDTO>(); 
-		employeeDTOList2  = (ArrayList<EmployeeDTO>) request.getAttribute("employeeList");
-		if (employeeDTOList != null){
-			for (int i = 0; i < employeeDTOList2.size(); i++) {
-				out.println(employeeDTOList2.get(i).getName());
-				out.println(employeeDTOList2.get(i).getEmail());
-				out.println(employeeDTOList2.get(i).getPhone());
-				out.println(employeeDTOList2.get(i).getSecondname());
-				out.println(employeeDTOList2.get(i).getOffice());
-				out.println(employeeDTOList2.get(i).getRole());
-				out.println(employeeDTOList2.get(i).getActive());
-			}	
-		}
-		
-	%>
-</form>
- --%>
 
 	</div>
 	<!--/.col-sm-12-->

@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.logging.Level;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import BO.LoginBO;
-import DAO.EntityDAO;
 import DTO.UserDTO;
+import util.LogMaker;
 
 
 /**
@@ -37,12 +38,16 @@ public class LoginControllerServlet extends HttpServlet {
 		String accessPage;
 
 		UserDTO userDTO = loginBO.validateUser(userName, userPassword);
+		LogMaker log = new LogMaker();
 		
 		if(userDTO != null) {
 			request.setAttribute("validateMessage", "Bem vindo " + userDTO.getName() + " !");
+			log.make(Level.INFO.toString(), "Acesso autorizado:" + userDTO.getName());			
 			accessPage = "/menu.jsp";
+			
 		} else {
 			request.setAttribute("validateMessage", "E-mail / Senha inválido(s)!");
+			log.make(Level.WARNING.toString(), "Acesso negado:" + userName);
 			accessPage = "/error.jsp";			
 		}
 

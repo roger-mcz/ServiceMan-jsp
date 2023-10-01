@@ -21,8 +21,7 @@ public class LoginDAO {
 						+ " WHERE tb_employee.email=? AND password=?";
 		UserDTO userDTO = null;		
 	
-		try {
-			
+		try {			
 			PreparedStatement ps = connectionDB.getInstance().getConnection().prepareStatement(sqlCheckUser);
 			ps.setString(1, userName);
 			ps.setString(2, userPassword);
@@ -36,11 +35,12 @@ public class LoginDAO {
 				}
 				userDTO.setEmail(userName);
 				
-				Logger.getLogger(LoginControllerServlet.class.getName()).log(Level.INFO,
-						"Acesso realizado com sucesso: " + userDTO.getName());
+//				Logger.getLogger(LoginControllerServlet.class.getName()).log(Level.INFO,
+//						"Acesso realizado com sucesso: " + userDTO.getName());
 			} else {
-				Logger.getLogger(LoginControllerServlet.class.getName()).log(Level.WARNING,
-						"Falha na tentativa de acesso: " + userName);
+//				Logger.getLogger(LoginControllerServlet.class.getName()).log(Level.WARNING,
+//						"Falha na tentativa de acesso: " + userName);
+				userDTO = null;
 			}
 			
 		} catch (SQLException ex) {

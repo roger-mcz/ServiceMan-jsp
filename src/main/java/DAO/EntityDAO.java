@@ -2,6 +2,7 @@ package DAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,18 +45,58 @@ public class EntityDAO {
 				employeeDTO.setCity(rs.getString("city"));
 				employeeDTO.setState(rs.getString("state"));
 				employeeDTOList.add(employeeDTO);
-			}
-			
-			for (EmployeeDTO employeeDTO : employeeDTOList) {
-				System.out.println("employeeDTO item:" + employeeDTO);
-			}
+			}			
+//			for (EmployeeDTO employeeDTO : employeeDTOList) {
+//				System.out.println("employeeDTO item:" + employeeDTO);
+//			}
+		} catch (Exception ex) {
+			Logger.getLogger(EntityDAO.class.getName()).log(Level.SEVERE, null, ex);
+			ex.printStackTrace();
+		}		
+	return employeeDTOList;	
+	}
+
+	
+	public int create(String sql) {
+		int intResult = 0;
+		try {
+			PreparedStatement ps = connectionDB.getInstance().getConnection().prepareStatement(sql);
+/*
+			ps.setString(1, employeeDTO.getName());
+			ps.setString(2, employeeDTO.getEmail());
+			ps.setString(3, employeeDTO.getPhone());
+			ps.setString(4, employeeDTO.getSecondname());
+			ps.setString(5, employeeDTO.getCpf());
+			ps.setString(6, employeeDTO.getOffice());
+			ps.setString(7, employeeDTO.getRole());
+//			ps.setString(8, employeeDTO.getActive().toString());	//sql exception
+			ps.setBoolean(8, employeeDTO.getActive());
+			ps.setString(9, employeeDTO.getStreet());
+//			ps.setString(10, employeeDTO.getNumberString());
+			ps.setInt(10, employeeDTO.getNumber());
+			ps.setString(11, employeeDTO.getCep());
+			ps.setString(12, employeeDTO.getNeighborhood());
+			ps.setString(13, employeeDTO.getCity());
+			ps.setString(14, employeeDTO.getState());
+			System.out.println("ps.toString: " + ps.toString());
+		*/	
+			intResult = ps.executeUpdate();
+		} catch (SQLException ex) {
+			Logger.getLogger(EntityDAO.class.getName()).log(Level.SEVERE, null, ex);
+			ex.printStackTrace();
 		} catch (Exception ex) {
 			Logger.getLogger(EntityDAO.class.getName()).log(Level.SEVERE, null, ex);
 			ex.printStackTrace();
 		}
-		
-	return employeeDTOList;	
+		return intResult;
+
 	}
+	
+	
+	
+	
+	
+	
 	
 	/*
 

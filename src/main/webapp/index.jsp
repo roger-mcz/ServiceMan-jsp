@@ -40,7 +40,7 @@
 					<button type="submit" class="btn btn-primary">Acessar!</button>
 				</div>
 				<div class="form-group mt-2">
-					<span>Esqueceu a senha?<a href="index.jsp">clique aqui.</a></span>
+					<span>Esqueceu a senha?<a href="index.jsp"> Clique aqui!</a></span>
 				</div>
 			</form>
 		</div>

@@ -67,7 +67,7 @@
 				<div class="card-body">
 					<div class="container col-sm-12">
 
-						<form id="frm_employees" action="CrudEmployee" method="POST">
+						<form id="frm_employees" action="employee?action=create" method="POST">
 							<div class="row">
 								<div class="col-4 form-group">
 									<label>Nome</label>
@@ -103,7 +103,7 @@
 								<div class="col-1 form-group text-center">
 									<label>Ativo</label>
 									<div class="col-12 form-group">
-										<input type="checkbox" id="chc_active" name="chc_active">
+										<input type="checkbox" id="chk_active" name="chk_active">
 									</div>
 								</div>
 							</div>
@@ -155,12 +155,10 @@
 													<div class="modal-footer">
 														<button 
 															type="submit" 
-															id="btnSair"
+															id="btnSave"
 															class="btn btn-success"
 															data-bs-dismiss="modal">
-															<i class="bi bi-check-all"></i> Salvar
-															
-															
+															<i class="bi bi-check-all"></i> Salvar				
 														</button>
 														<button 
 															type="button" 
@@ -173,8 +171,9 @@
 											</div>
 										</div>
 
-										
-										<button name="btn_back" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#mdl_cancel" onclick="history.back()">
+						<!-- melhorar o botão voltar p/ ler os dados cadastrados e atualizar no employee.jsp  -->				
+<!-- 										<button name="btn_back" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#mdl_cancel" onclick="voltarERecarregar()"> -->
+ 										<button name="btn_back" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#mdl_cancel" onclick="history.back()">
 											<i class="bi bi-arrow-left-circle"></i> Voltar
 										</button>										
 									</div>
@@ -190,7 +189,15 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
 	<script>
-		document.getElementById('btnConfirm').addEventListener('click', function() {
+
+		function voltarERecarregar() {
+		    history.go(-1); // Volta uma página no histórico (para a página anterior, que é a mesma)
+		    location.reload(true); // Recarrega a página atual
+		}
+	
+	
+/* 	//limpando os imputs
+	document.getElementById('btnConfirm').addEventListener('click', function() {
 			clearFormInputs();
 		});
 
@@ -209,7 +216,7 @@
 			document.getElementById('ipt_neighborhood').value = '';
 			document.getElementById('ipt_city').value = '';
 			document.getElementById('ipt_state').value = '';					
-		}
+		} */
 	</script>
 
 </body>

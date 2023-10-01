@@ -11,10 +11,9 @@ public class EntityBO {
 	 * @author Rogério Oliveira Servlet implementation class Logout
 	 */
 		
+	EntityDAO entityDAO = new EntityDAO();
 	
 	public ArrayList<EmployeeDTO> list(){
-		
-		EntityDAO entityDAO = new EntityDAO();
 		StringBuilder sql = new StringBuilder();
 
 		/**
@@ -24,8 +23,37 @@ public class EntityBO {
 		 */
 		sql.append("SELECT id, name, email, phone, secondname, cpf, office, role, active::text, street, number, cep, neighborhood, city, state");
 		sql.append(" FROM tb_employee");
-		
+		sql.append(" ORDER BY name");
 		return entityDAO.list(sql.toString());
 	}
+	
+	
+	public int create(EmployeeDTO employeeDTO) {
+		StringBuilder sql = new StringBuilder();
+		String sqlParameters =  
+				"'" + employeeDTO.getName() + "', " +  
+				"'" + employeeDTO.getEmail() + "', " +
+				"'" + employeeDTO.getPhone() + "', " +
+				"'" + employeeDTO.getSecondname() + "', " +
+				"'" + employeeDTO.getCpf() + "', " +
+				"'" + employeeDTO.getOffice() + "', " +
+				"'" + employeeDTO.getRole() + "', " +
+				employeeDTO.getActive() + ", " +
+				"'" + employeeDTO.getStreet() + "', " +
+				employeeDTO.getNumber() + ", " +
+				"'" + employeeDTO.getCep() + "', " +
+				"'" + employeeDTO.getNeighborhood() + "', " +
+				"'" + employeeDTO.getCity() + "', " +
+				"'" + employeeDTO.getState() + "'";		
+		
+//		sql.append("INSERT INTO tb_employee (name, email, phone, secondname, cpf, office, role, active, street, number, cep, neighborhood, city, state) VALUES ('nome1', 'nome1@mail.com', '999999999', 'sobre1', '99999999', 'analista', 'n9', TRUE, 'rua 99', 2, '999999999', 'centro', 'mcz', 'al')");
+		sql.append("INSERT INTO");
+		sql.append(" tb_employee (name, email, phone, secondname, cpf, office, role, active, street, number, cep, neighborhood, city, state)");
+		sql.append(" VALUES (" + sqlParameters + ")");
+		return entityDAO.create(sql.toString());
+	}
+	
+	
+	
 	
 }

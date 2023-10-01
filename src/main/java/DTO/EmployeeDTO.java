@@ -160,7 +160,12 @@ public class EmployeeDTO {
 		return number;
 	}
 
+	
+	public String getNumberString() {
+		return Integer.toString(number);
+	}
 
+	
 	public void setNumber(int number) {
 		this.number = number;
 	}
