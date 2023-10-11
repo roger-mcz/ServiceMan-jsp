@@ -16,7 +16,7 @@ public class LoginDAO {
 	
 	public UserDTO validateUser(String userName, String userPassword) {
 		
-		String sqlCheckUser = "SELECT tb_employee.id, tb_employee.name"
+		String sqlCheckUser = "SELECT tb_employee.id, tb_employee.name, tb_employee.secondname"
 						+ " FROM tb_employee" + " INNER JOIN tb_user" + "  ON tb_employee.id = tb_user.idemployee"
 						+ " WHERE tb_employee.email=? AND password=?";
 		UserDTO userDTO = null;		
@@ -32,6 +32,7 @@ public class LoginDAO {
 				while(rs.next()) {
 					userDTO.setId(Long.parseLong(rs.getString("id")));
 					userDTO.setName(rs.getString("name"));
+					userDTO.setSecondName(rs.getString("secondname"));
 				}
 				userDTO.setEmail(userName);
 				

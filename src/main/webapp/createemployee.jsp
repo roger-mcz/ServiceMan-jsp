@@ -1,61 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-	<%@ page import="DTO.EmployeeDTO" %>
-		<%@ page import="java.util.ArrayList" %>
+<!-- chamada do cabecalho da pagina  -->
+<%@ include file="header.jsp" %>
 
-
-<!DOCTYPE html>
-<html>
-
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Gerenciamento de servicos">
-	<meta name="author" content="Rogerio Oliveira">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-	<title>Service manager</title>
-</head>
-
-<body>
-	<nav class="navbar bg-primary">
-		<div class="container-fluid">
-			<span class="navbar-text text-bg-primary">Status: 
-				${validateMessage}
-			</span>
-			<form class="d-flex" role="form" action="Logout" method="GET">
-				<button class="btn btn-light" type="button" data-bs-toggle="modal" data-bs-target="#mdl_logout">Logout</button>				
-				<!-- modal de confirma√ß√£o -->
-				<div class="modal fade" id="mdl_logout"	data-bs-backdrop="static">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title">Deseja sair do sistema?</h5>
-							</div>
-							<div class="modal-footer">
-								<button 
-									type="submit" 
-									id="btnSair"
-									class="btn btn-success"
-									data-bs-dismiss="modal"
-									>Sair
-								</button>
-								<button 
-									type="button" 
-									class="btn btn-danger" 
-									data-bs-dismiss="modal">Cancelar
-								</button>
-							</div>
-						</div>
-					</div>
-				</div>				
-			</form>
-		</div>
-	</nav>
+<%@ page import="DTO.EmployeeDTO"%>
+<%@ page import="java.util.ArrayList"%>
 
 	<div class="row">
 		<div class="col-md-12 text-center my-1">
-			<h1 class="text-">Manuten√ß√£o de colaboradores</h1>
+			<h1 class="text-">ManutenÁ„o de colaboradores</h1>
 		</div>
 
 		<div class="container col-sm-10">
@@ -71,7 +22,7 @@
 							<div class="row">
 								<div class="col-4 form-group">
 									<label>Nome</label>
-									<input type="text" id="ipt_name" name="ipt_name" class="form-control">
+									<input type="text" id="ipt_name" name="ipt_name" class="form-control" required>
 								</div>
 								<div class="col-4 form-group">
 									<label>Sobrenome</label>
@@ -79,26 +30,26 @@
 								</div>
 								<div class="col-4 form-group">
 									<label>Email</label>
-									<input type="email" id="ipt_email" name="ipt_email" class="form-control">
+									<input type="email" id="ipt_email" name="ipt_email" class="form-control" required>
 								</div>
 							</div>
 							<br>
 							<div class="row">
 								<div class="col-3 form-group">
 									<label>Telefone</label>
-									<input type="text" id="ipt_phone" name="ipt_phone" class="form-control">
+									<input type="text" id="ipt_phone" name="ipt_phone" class="form-control" required>
 								</div>
 								<div class="col-3 form-group">
 									<label>CPF</label>
-									<input type="text" id="ipt_cpf" name="ipt_cpf" class="form-control">
+									<input type="text" id="ipt_cpf" name="ipt_cpf" class="form-control" required>
 								</div>
 								<div class="col-4 form-group">
-									<label>Fun√ß√£o</label>
-									<input type="text" id="ipt_office" name="ipt_office" class="form-control">
+									<label>FunÁ„o</label>
+									<input type="text" id="ipt_office" name="ipt_office" class="form-control" required>
 								</div>
 								<div class="col-1 form-group">
-									<label>N√≠vel</label>
-									<input type="text" id="ipt_role" name="ipt_role" class="form-control">
+									<label>NÌvel</label>
+									<input type="text" id="ipt_role" name="ipt_role" class="form-control" required>
 								</div>
 								<div class="col-1 form-group text-center">
 									<label>Ativo</label>
@@ -112,15 +63,15 @@
 							<div class="row">
 								<div class="col-4 form-group">
 									<label>Rua</label>
-									<input type="text" id="ipt_street" name="ipt_street" class="form-control">						
+									<input type="text" id="ipt_street" name="ipt_street" class="form-control" required>						
 								</div>
 								<div class="col-1 form-group">
-									<label>N√∫mero</label>
-									<input type="number" id="ipt_number" name="ipt_number" class="form-control">				
+									<label>N˙mero</label>
+									<input type="number" id="ipt_number" name="ipt_number" class="form-control" required>				
 								</div>
 								<div class="col-2 form-group">
 									<label>CEP</label>
-									<input type="text" id="ipt_cep" name="ipt_cep" class="form-control">
+									<input type="text" id="ipt_cep" name="ipt_cep" class="form-control" required>
 								</div>
 								<div class="col-2 form-group">
 									<label>Bairro</label>
@@ -145,7 +96,7 @@
 										<button class="btn btn-success" type="button" id="btn_save" data-bs-toggle="modal" data-bs-target="#mdl_save">
 											<i class="bi bi-check-all"></i> Salvar
 										</button>
-										<!-- modal de confirma√ß√£o -->
+										<!-- modal de confirmaÁ„o -->
  										<div class="modal fade" id="mdl_save" data-bs-backdrop="static">
 											<div class="modal-dialog">
 												<div class="modal-content">
@@ -171,7 +122,7 @@
 											</div>
 										</div>
 
-						<!-- melhorar o bot√£o voltar p/ ler os dados cadastrados e atualizar no employee.jsp  -->				
+						<!-- melhorar o bot„o voltar p/ ler os dados cadastrados e atualizar no employee.jsp  -->				
 <!-- 										<button name="btn_back" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#mdl_cancel" onclick="voltarERecarregar()"> -->
  										<button name="btn_back" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#mdl_cancel" onclick="history.back()">
 											<i class="bi bi-arrow-left-circle"></i> Voltar
@@ -191,8 +142,8 @@
 	<script>
 
 		function voltarERecarregar() {
-		    history.go(-1); // Volta uma p√°gina no hist√≥rico (para a p√°gina anterior, que √© a mesma)
-		    location.reload(true); // Recarrega a p√°gina atual
+		    history.go(-1); // Volta uma p·gina no histÛrico (para a p·gina anterior, que È a mesma)
+		    location.reload(true); // Recarrega a p·gina atual
 		}
 	
 	

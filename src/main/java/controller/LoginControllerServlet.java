@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import BO.LoginBO;
 import DTO.UserDTO;
@@ -40,13 +41,20 @@ public class LoginControllerServlet extends HttpServlet {
 		UserDTO userDTO = loginBO.validateUser(userName, userPassword);
 		LogMaker log = new LogMaker();
 		
-		if(userDTO != null) {
-			request.setAttribute("validateMessage", "Bem vindo " + userDTO.getName() + " !");
-			log.make(Level.INFO.toString(), "Acesso autorizado:" + userDTO.getName());			
+		String statusMessage = "";
+		HttpSession session = request.getSession();
+		
+		if(userDTO != null) {			
+			statusMessage = "Bem vindo " + userDTO.getName() + " " + userDTO.getSecondName();
+			session.setAttribute("statusmessage", statusMessage);
+//			request.setAttribute("validateMessage", "Bem vindo " + userDTO.getName() + " !");
+			log.make(Level.INFO.toString(), "Acesso autorizado:" + userDTO.getEmail());			
 			accessPage = "/menu.jsp";
 			
 		} else {
-			request.setAttribute("validateMessage", "E-mail / Senha inválido(s)!");
+			statusMessage = "Falha de acesso: E-mail / Senha inválido(s)!";
+			session.setAttribute("statusmessage", statusMessage);
+//			request.setAttribute("validateMessage", "Falha de acesso: E-mail / Senha inválido(s)!");
 			log.make(Level.WARNING.toString(), "Acesso negado:" + userName);
 			accessPage = "/error.jsp";			
 		}
