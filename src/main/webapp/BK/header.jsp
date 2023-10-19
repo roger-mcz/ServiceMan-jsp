@@ -11,16 +11,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Gerenciamento de servicos">
 <meta name="author" content="Rogerio Oliveira">
-
 <link
-rel="stylesheet"
-href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-crossorigin="anonymous">
-	
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap5.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
 <title>Service manager</title>
 </head>
@@ -28,6 +25,7 @@ crossorigin="anonymous">
 	<nav class="navbar bg-primary">
 		<div class="container-fluid">
 			<span class="navbar-text text-bg-primary">Status: 
+<%-- 				${validateMessage} --%>
 				<%=session.getAttribute("statusmessage") %>
 			</span>
 			<form class="d-flex" role="form" action="Logout" method="GET">
