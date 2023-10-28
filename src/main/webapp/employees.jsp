@@ -11,8 +11,7 @@
 			<label>&nbsp;</label>
 			<div class="row align-items-center">
 				<div class="col-sm-2 align-items-center text-center">
-					<img src="img/employees.jpg" alt="employees-img"
-						class="img-fluid rounded-circle img-thumbnail">
+					<img src="img/employees.jpg" alt="employees-img" class="img-fluid rounded-circle img-thumbnail">
 				</div>
 				<div class="col-sm-10">
 					<h1 class="display-4">Colaboradores</h1>
@@ -22,9 +21,13 @@
 			<div class="card-body align-items-center">
 				<div class="row align-items-center">
 					<div class="col-sm-6 d-grid gap-2 d-md-flex">
-						<a href="createemployee.jsp" class="btn btn-success"> <i
-							class="bi bi-person-plus"></i> Adicionar
-						</a>
+						<a href="createemployee.jsp" class="btn btn-success"> 
+							<i class="bi bi-person-plus"></i> Adicionar
+						</a>						
+							<%
+        						String labelCrud = "Cadastro de colaboradores";
+        						session.setAttribute("labelCrud", labelCrud);
+    						%>    						
 						<button name="btn_back" type="button" class="btn btn-secondary"
 							onclick="history.back()">
 							<i class="bi bi-arrow-left-circle"></i> Voltar
