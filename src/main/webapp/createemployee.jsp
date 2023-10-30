@@ -28,7 +28,8 @@
 		</div>
 
 		<div class="container  col-sm-10">
-			<form id="frm_employees" action="employee?action=create" method="POST">
+		
+		<form id="frm_employees" action="employee?action=create" method="POST">
 				<div class="row">
 					<div class="col-4 form-group">
 						<label>Nome</label>
@@ -105,6 +106,8 @@
 							</button>
 							<!-- modal de confirmação -->
 							<div class="modal fade" id="mdl_save" data-bs-backdrop="static">
+
+							
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -127,17 +130,17 @@
 										</div>
 									</div>
 								</div>
-							</div>
+							
+						</div>
 							<!-- modal de confirmação -->
-							<!-- melhorar o botão voltar p/ ler os dados cadastrados e atualizar no employee.jsp  -->				
-							<!-- <button name="btn_back" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#mdl_cancel" onclick="voltarERecarregar()"> -->
- 							<button name="btn_back" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#mdl_cancel" onclick="history.back()">
+							<a href="employee?action=read" method="GET" class="btn btn-secondary">
 								<i class="bi bi-arrow-left-circle"></i> Voltar
-							</button>										
+							</a>
 						</div>
 					</div>
 				</div>
 			</form>
+				
 		</div>
 	</div>
 
@@ -148,11 +151,6 @@
 
 	<script>
 
-		function voltarERecarregar() {
-		    history.go(-1); // Volta uma página no histórico (para a página anterior, que é a mesma)
-		    location.reload(true); // Recarrega a página atual
-		}
-	
 	
 /* 	//limpando os imputs
 	document.getElementById('btnConfirm').addEventListener('click', function() {

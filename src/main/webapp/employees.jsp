@@ -21,20 +21,30 @@
 			<div class="card-body align-items-center">
 				<div class="row align-items-center">
 					<div class="col-sm-6 d-grid gap-2 d-md-flex">
-						<a href="createemployee.jsp" class="btn btn-success"> 
+<!--  						<button name="btn_back" type="button" class="btn btn-secondary"
+							onclick="history.go(-1)">
+							<i class="bi bi-arrow-left-circle"></i> Voltar
+						</button>
+						 -->
+						<a href="menu.jsp" method="GET" class="btn btn-secondary"> 
+							<i class="bi bi-arrow-left-circle"></i> Voltar
+						</a>	
+						
+						<a href="employee?action=create" method="GET" class="btn btn-success"> 
 							<i class="bi bi-person-plus"></i> Adicionar
 						</a>						
 							<%
         						String labelCrud = "Cadastro de colaboradores";
+        						String actionCrud = "create";
         						session.setAttribute("labelCrud", labelCrud);
+        						session.setAttribute("actionCrud", actionCrud);
     						%>    						
-						<button name="btn_back" type="button" class="btn btn-secondary"
-							onclick="history.back()">
-							<i class="bi bi-arrow-left-circle"></i> Voltar
-						</button>
+<!-- 						<button name="btn_back" type="button" class="btn btn-primary" onClick="window.location.reload()">
+							<i class="bi bi-arrow-clockwise"></i> Atualizar
+						</button> -->
 					</div>
 					<div class="col-sm-6 d-grid gap-2 d-md-flex justify-content-md-end">
-						<a href="createemployee.jsp" class="btn btn-primary"> <i
+						<a href="createemployee.jsp" class="btn btn-danger"> <i
 							class="bi bi-file-earmark-pdf"></i> .PDF
 						</a> <a href="createemployee.jsp" class="btn btn-secondary"> <i
 							class="bi bi-filetype-csv"></i> .CSV
@@ -55,7 +65,6 @@
 
 <!-- DataTable -->
 <div class="container col-sm-10">
-	<!-- 	<form action="Employees" method="GET"> -->
 	<table id="tb_employees" class="table table-striped table-bordered table-hover">
 		<thead class="table-primary bg-primary">
 			<tr>
@@ -87,15 +96,15 @@
 				<td class="text-center">
 					<button type="button" class="btn btn-outline-success me-2"
 						style="--bs-btn-padding-y: .10rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1rem;">
-						<i class="bi bi-eye"></i>
+						<i class="bi bi-eye"></i> <!-- exibir detalhes -->
 					</button>
 					<button type="button" class="btn btn-outline-warning me-2"
 						style="--bs-btn-padding-y: .10rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1rem;">
-						<i class="bi bi-pencil-square"></i>
+						<i class="bi bi-pencil-square"></i> <!-- editar employee -->
 					</button>
 					<button type="button" class="btn btn-outline-danger me-2"
 						style="--bs-btn-padding-y: .10rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1rem;">
-						<i class="bi bi-trash3"></i>
+						<i class="bi bi-trash3"></i> <!-- excluir employee -->
 					</button>
 				</td>
 			</tr>
@@ -106,7 +115,6 @@
 		</tbody>
 	</table>
 		<hr>
-	<!--  		</form> -->
 	</div>
 
     <!-- DataTable JS -->

@@ -1,6 +1,5 @@
 package controller;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -23,33 +22,33 @@ import util.LogMaker;
 @WebServlet("/employee")
 public class EmployeeControllerServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 
-    public EmployeeControllerServlet() {
-        super();
-    }
-    
-    
-    ArrayList<EmployeeDTO> entityDTOList = null;
-    EmployeeDTO employeeDTO = null;
-    String accessPage;
-    String action;
-    String operateResult;
-    String attributeMessage;
-    EntityBO entityBO = new EntityBO();
+	public EmployeeControllerServlet() {
+		super();
+	}
+
+	ArrayList<EmployeeDTO> entityDTOList = null;
+	EmployeeDTO employeeDTO = null;
+	String accessPage;
+	String action = null;
+	String operateResult;
+	String attributeMessage;
+	EntityBO entityBO = new EntityBO();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		if (action == null) {
-			action = request.getParameter("action");
-		}
+		//action = null;
+		action = request.getParameter("action");
+		
 
 		if(action != null) {
-			if (action.equals("list")) {
-				clearEntityDTOList();
+			clearEntityDTOList();
+			if (action.equals("read")) {
 				entityDTOList = listEntity();
 				accessPage = "employees.jsp";
-			}
+			}else if (action.equals("create")) {
+				accessPage = "createemployee.jsp";
+			}			
 			else {
 				System.out.println("Falha de action do JSP:" + action);
 				accessPage = "error.jsp";
@@ -61,21 +60,18 @@ public class EmployeeControllerServlet extends HttpServlet {
 		rd.forward(request, response);
 	}
 
-	
-	protected ArrayList<EmployeeDTO> listEntity() {		
+	protected ArrayList<EmployeeDTO> listEntity() {
 		return entityBO.list();
 	}
-	
-	
+
 	protected void clearEntityDTOList() {
 		if (entityDTOList != null) {
 			entityDTOList.clear();
 		}
 	}
-	
-	
+
 	protected EmployeeDTO makeEntityDTO(HttpServletRequest request) {
-		
+
 		employeeDTO = new EmployeeDTO();
 		Boolean boolActive = false;
 		employeeDTO.setId(999L);
@@ -87,12 +83,12 @@ public class EmployeeControllerServlet extends HttpServlet {
 		employeeDTO.setOffice(request.getParameter("ipt_office"));
 		employeeDTO.setRole(request.getParameter("ipt_role"));
 
-		/* 
+		/*
 		 * input type="checkbox" retorna: on/null
-		 */		
-		if(request.getParameter("chk_active") != null) {
+		 */
+		if (request.getParameter("chk_active") != null) {
 			boolActive = true;
-		}		
+		}
 		employeeDTO.setActive(boolActive);
 		employeeDTO.setStreet(request.getParameter("ipt_street"));
 		employeeDTO.setNumber(Integer.valueOf(request.getParameter("ipt_number")));
@@ -103,15 +99,16 @@ public class EmployeeControllerServlet extends HttpServlet {
 		return employeeDTO;
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		int intResult = 0;		
-		String action = request.getParameter("action");
+		int intResult = 0;
 		LogMaker log = new LogMaker();
-		
+		String action = request.getParameter("action");
+
 		if (action.equals("create")) {
-			intResult = entityBO.create(makeEntityDTO(request));
 			
+			intResult = entityBO.create(makeEntityDTO(request));
 			if (intResult == 1) {
 				operateResult = "Gravação realizada!";
 				log.make(Level.INFO.toString(), "Gravado com sucesso:" + employeeDTO.getEmail());
@@ -122,27 +119,23 @@ public class EmployeeControllerServlet extends HttpServlet {
 				System.out.println("Falha na Gravação!");
 				log.make(Level.WARNING.toString(), "Acesso negado:" + employeeDTO.getEmail());
 				accessPage = "error.jsp";
-			}
-			
+			}	
 		}
-		else {
-			System.out.println("Falha de action do JSP:" + action);
-			operateResult = "falha no action";
-			accessPage = "error.jsp";
-		}
+
+
+		
+		
 		RequestDispatcher rd = request.getRequestDispatcher(accessPage);
 		rd.forward(request, response);
 	}
-	
 
-
-	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPut(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
-
-	
-	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
