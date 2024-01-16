@@ -21,27 +21,19 @@
 			<div class="card-body align-items-center">
 				<div class="row align-items-center">
 					<div class="col-sm-6 d-grid gap-2 d-md-flex">
-<!--  						<button name="btn_back" type="button" class="btn btn-secondary"
-							onclick="history.go(-1)">
-							<i class="bi bi-arrow-left-circle"></i> Voltar
-						</button>
-						 -->
 						<a href="menu.jsp" method="GET" class="btn btn-secondary"> 
 							<i class="bi bi-arrow-left-circle"></i> Voltar
-						</a>	
-						
-						<a href="employee?action=create" method="GET" class="btn btn-success"> 
+						</a>							
+						<a href="employee?action=create" method="GET" class="btn btn-primary"> 
 							<i class="bi bi-person-plus"></i> Adicionar
 						</a>						
-							<%
-        						String labelCrud = "Cadastro de colaboradores";
-        						String actionCrud = "create";
-        						session.setAttribute("labelCrud", labelCrud);
-        						session.setAttribute("actionCrud", actionCrud);
-    						%>    						
-<!-- 						<button name="btn_back" type="button" class="btn btn-primary" onClick="window.location.reload()">
-							<i class="bi bi-arrow-clockwise"></i> Atualizar
-						</button> -->
+						<%
+							//passagem de parametros p/ EmployeeControllerServlet
+        					String labelCrud = "Cadastro de colaboradores";
+        					String actionCrud = "create";
+        					session.setAttribute("labelCrud", labelCrud);
+        					session.setAttribute("actionCrud", actionCrud);
+    					%>
 					</div>
 					<div class="col-sm-6 d-grid gap-2 d-md-flex justify-content-md-end">
 						<a href="createemployee.jsp" class="btn btn-danger"> <i
@@ -94,14 +86,23 @@
 				<td class="text-center"><%=employeeDTOList.get(i).getRole()%></td>
 				<td class="text-center"><%=employeeDTOList.get(i).getActive()%></td>
 				<td class="text-center">
-					<button type="button" class="btn btn-outline-success me-2"
+					<button type="button" class="btn btn-outline-primary me-2"
 						style="--bs-btn-padding-y: .10rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1rem;">
 						<i class="bi bi-eye"></i> <!-- exibir detalhes -->
 					</button>
-					<button type="button" class="btn btn-outline-warning me-2"
+									
+				 
+					<button type="button" class="btn btn-outline-success me-2"
 						style="--bs-btn-padding-y: .10rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1rem;">
 						<i class="bi bi-pencil-square"></i> <!-- editar employee -->
 					</button>
+				 	
+				<!-- 					
+						<a href="employee?action=update" method="PUT" class="btn btn-success"> 
+						<i class="bi bi-pencil-square"></i>
+					</a>
+					-->
+					
 					<button type="button" class="btn btn-outline-danger me-2"
 						style="--bs-btn-padding-y: .10rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1rem;">
 						<i class="bi bi-trash3"></i> <!-- excluir employee -->

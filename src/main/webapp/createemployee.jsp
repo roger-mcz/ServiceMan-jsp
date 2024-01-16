@@ -27,9 +27,8 @@
 			</div>
 		</div>
 
-		<div class="container  col-sm-10">
-		
-		<form id="frm_employees" action="employee?action=create" method="POST">
+		<div class="container  col-sm-10">		
+			<form id="frm_employees" action="employee?action=create" method="POST">
 				<div class="row">
 					<div class="col-4 form-group">
 						<label>Nome</label>
@@ -106,8 +105,6 @@
 							</button>
 							<!-- modal de confirmação -->
 							<div class="modal fade" id="mdl_save" data-bs-backdrop="static">
-
-							
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<div class="modal-header">
@@ -130,8 +127,7 @@
 										</div>
 									</div>
 								</div>
-							
-						</div>
+							</div>
 							<!-- modal de confirmação -->
 							<a href="employee?action=read" method="GET" class="btn btn-secondary">
 								<i class="bi bi-arrow-left-circle"></i> Voltar
@@ -140,17 +136,12 @@
 					</div>
 				</div>
 			</form>
-				
 		</div>
-	</div>
 
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-
-
-
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
+	</script>
 
 	<script>
-
 	
 /* 	//limpando os imputs
 	document.getElementById('btnConfirm').addEventListener('click', function() {

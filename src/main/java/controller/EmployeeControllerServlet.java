@@ -39,7 +39,6 @@ public class EmployeeControllerServlet extends HttpServlet {
 
 		//action = null;
 		action = request.getParameter("action");
-		
 
 		if(action != null) {
 			clearEntityDTOList();
@@ -48,7 +47,9 @@ public class EmployeeControllerServlet extends HttpServlet {
 				accessPage = "employees.jsp";
 			}else if (action.equals("create")) {
 				accessPage = "createemployee.jsp";
-			}			
+			}else if (action.equals("update")) {
+				accessPage = "createemployee.jsp";
+			}
 			else {
 				System.out.println("Falha de action do JSP:" + action);
 				accessPage = "error.jsp";
@@ -121,17 +122,33 @@ public class EmployeeControllerServlet extends HttpServlet {
 				accessPage = "error.jsp";
 			}	
 		}
-
-
-		
-		
+				
 		RequestDispatcher rd = request.getRequestDispatcher(accessPage);
 		rd.forward(request, response);
 	}
 
 	protected void doPut(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		int intResult = 0;
+		LogMaker log = new LogMaker();
+		String action = request.getParameter("action");
+		
+		if (action.equals("update")) {
+			
+			intResult = entityBO.create(makeEntityDTO(request));
+			if (intResult == 1) {
+				operateResult = "Gravação realizada!";
+				log.make(Level.INFO.toString(), "Gravado com sucesso:" + employeeDTO.getEmail());
+				clearEntityDTOList();
+				entityDTOList = listEntity();
+				accessPage = "createemployee.jsp";
+			}else {
+				System.out.println("Falha na Gravação!");
+				log.make(Level.WARNING.toString(), "Acesso negado:" + employeeDTO.getEmail());
+				accessPage = "error.jsp";
+			}	
+		}
 	}
 
 	protected void doDelete(HttpServletRequest request, HttpServletResponse response)
