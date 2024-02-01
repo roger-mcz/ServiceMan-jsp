@@ -8,12 +8,13 @@ import DTO.EmployeeDTO;
 public class EntityBO {
 
 	/**
-	 * @author Rogério Oliveira Servlet implementation class Logout
+	 * @author Rogério Oliveira 
 	 */
 		
 	EntityDAO entityDAO = new EntityDAO();
 	
-	public ArrayList<EmployeeDTO> list(){
+	public ArrayList<EmployeeDTO> findAllEntity(){
+		
 		StringBuilder sql = new StringBuilder();
 
 		/**
@@ -24,11 +25,23 @@ public class EntityBO {
 		sql.append("SELECT id, name, email, phone, secondname, cpf, office, role, active::text, street, number, cep, neighborhood, city, state");
 		sql.append(" FROM tb_employee");
 		sql.append(" ORDER BY name");
-		return entityDAO.list(sql.toString());
+		return entityDAO.findAllEntity(sql.toString());
+	}
+	
+	
+	public EmployeeDTO findEntityById(String id) {
+		
+		StringBuilder sql = new StringBuilder();
+		sql.append("SELECT id, name, email, phone, secondname, cpf, office, role, active::text, street, number, cep, neighborhood, city, state");
+		sql.append(" FROM tb_employee");
+		sql.append(" WHERE id = " + id);
+		
+		return entityDAO.findEntityById(sql.toString());		
 	}
 	
 	
 	public int create(EmployeeDTO employeeDTO) {
+		
 		StringBuilder sql = new StringBuilder();
 		String sqlParameters =  
 				"'" + employeeDTO.getName() + "', " +  

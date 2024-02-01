@@ -21,7 +21,7 @@ public class EntityDAO {
 	EmployeeDTO employeeDTO = null;
 	ArrayList<EmployeeDTO> employeeDTOList = new ArrayList<>();
 	
-	public ArrayList<EmployeeDTO> list(String sql){
+	public ArrayList<EmployeeDTO> findAllEntity(String sql){
 		
 		try {
 			PreparedStatement ps = connectionDB.getInstance().getConnection().prepareStatement(sql);
@@ -56,6 +56,41 @@ public class EntityDAO {
 	return employeeDTOList;	
 	}
 
+	
+	public EmployeeDTO findEntityById(String sql) {
+		
+		try {
+			PreparedStatement ps = connectionDB.getInstance().getConnection().prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+
+			while(rs.next()) {
+				employeeDTO = new EmployeeDTO(); //tem q criar aqui p/ gerar um novo obj a ser adicionado (.add)
+				employeeDTO.setId(Long.parseLong(rs.getString("id")));
+				employeeDTO.setName(rs.getString("name"));
+				employeeDTO.setSecondname(rs.getString("secondname"));
+				employeeDTO.setEmail(rs.getString("email"));
+				employeeDTO.setPhone(rs.getString("phone"));
+				employeeDTO.setCpf(rs.getString("cpf"));
+				employeeDTO.setOffice(rs.getString("office"));
+				employeeDTO.setRole(rs.getString("role"));
+				employeeDTO.setActive(Boolean.valueOf(rs.getString("active")));
+				employeeDTO.setStreet(rs.getString("street"));
+				employeeDTO.setNumber(Integer.valueOf(rs.getString("number")));
+				employeeDTO.setCep(rs.getString("cep"));
+				employeeDTO.setNeighborhood(rs.getString("neighborhood"));
+				employeeDTO.setCity(rs.getString("city"));
+				employeeDTO.setState(rs.getString("state"));
+			}
+			//System.out.println(employeeDTO);
+			
+		} catch (Exception ex) {
+			Logger.getLogger(EntityDAO.class.getName()).log(Level.SEVERE, null, ex);
+			ex.printStackTrace();
+		}
+		return employeeDTO;	
+	}
+	
+	
 	
 	public int create(String sql) {
 		int intResult = 0;

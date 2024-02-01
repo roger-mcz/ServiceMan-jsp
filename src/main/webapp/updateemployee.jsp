@@ -21,14 +21,14 @@
 						<img src="img/employees.jpg" alt="employees-img" class="img-fluid rounded-circle img-thumbnail"  style="max-width: 80%;">
 					</div>
 					<div class="col col-sm-11 vertical-center">
-						<label class="fs-4">Cadastro de colaborador</label>
+						<label class="fs-4">Editar colaborador</label>
 					</div>
 				</div>
 			</div>
 		</div>
 
 		<div class="container  col-sm-10">		
-			<form id="frm_employees" action="employee?action=create" method="POST">
+			<form id="frm_employees" action="employee?action=update" method="PUT">
 				<div class="row">
 					<div class="col-4 form-group">
 						<label>Nome</label>
@@ -108,7 +108,7 @@
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<div class="modal-header">
-											<h5 class="modal-title">Deseja realmente salvar o registro?</h5>
+											<h5 class="modal-title">Deseja realmente atualizar o registro?</h5>
 										</div>
 										<div class="modal-footer">
 											<button 

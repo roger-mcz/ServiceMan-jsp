@@ -29,9 +29,7 @@
 						</a>						
 						<%
 							//passagem de parametros p/ EmployeeControllerServlet
-        					String labelCrud = "Cadastro de colaboradores";
         					String actionCrud = "create";
-        					session.setAttribute("labelCrud", labelCrud);
         					session.setAttribute("actionCrud", actionCrud);
     					%>
 					</div>
@@ -86,27 +84,27 @@
 				<td class="text-center"><%=employeeDTOList.get(i).getRole()%></td>
 				<td class="text-center"><%=employeeDTOList.get(i).getActive()%></td>
 				<td class="text-center">
+									
+					<!-- exibir detalhes -->
 					<button type="button" class="btn btn-outline-primary me-2"
 						style="--bs-btn-padding-y: .10rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1rem;">
-						<i class="bi bi-eye"></i> <!-- exibir detalhes -->
+						<i class="bi bi-eye"></i> 
 					</button>
 									
-				 
-					<button type="button" class="btn btn-outline-success me-2"
+					<!-- editar employee  -->
+					<a href="employee?action=update&employeeid=<%=employeeDTOList.get(i).getId()%>" method="GET" class="btn btn-outline-success me-2"
 						style="--bs-btn-padding-y: .10rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1rem;">
-						<i class="bi bi-pencil-square"></i> <!-- editar employee -->
-					</button>
-				 	
-				<!-- 					
-						<a href="employee?action=update" method="PUT" class="btn btn-success"> 
 						<i class="bi bi-pencil-square"></i>
 					</a>
-					-->
+				
 					
-					<button type="button" class="btn btn-outline-danger me-2"
+					<!-- excluir employee 
+					<button type="button" class="btn btn-outline-danger me-2" -->
+					<a href="employee?action=delete&employeeid=<%=employeeDTOList.get(i).getId()%>" method="GET" class="btn btn-outline-danger me-2"
 						style="--bs-btn-padding-y: .10rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: 1rem;">
-						<i class="bi bi-trash3"></i> <!-- excluir employee -->
-					</button>
+						<i class="bi bi-trash3"></i>
+					</a>
+<!-- 					</button> -->
 				</td>
 			</tr>
 			<%

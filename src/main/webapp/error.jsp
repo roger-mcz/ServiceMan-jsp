@@ -52,7 +52,7 @@
 			</div>
             <div >
                 <label>
-                    <h5>Verifique o usuário ou senha e tente novamente!</h5>
+                    <h5>Aceione o suporte e tente novamente!</h5>
                 </label>
                 <br>
                 <br>
